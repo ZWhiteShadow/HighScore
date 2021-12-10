@@ -20,13 +20,11 @@ public class Main {
             System.out.println("Player " + (player + 1) + " of " + numberOfPlayers + ": ");
 
             String name = "";
-            while (name.equals("")) {
-                System.out.print("Name: ");
-                name = reader.next();
-                unsortedPlayersArray[player] = name;
-            }
+            System.out.print("Name: ");
+            name = reader.next();
+            unsortedPlayersArray[player] = name;
+            
             int score;
-
             System.out.print("Score: ");
             score = reader.nextInt();
             scoresArray[player] = score;
