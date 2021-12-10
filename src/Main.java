@@ -5,8 +5,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-////        --Comment this out to test -- START -- //
-
         System.out.println("Enter in names and scores of players to see high score list: \n");
         Scanner reader = new Scanner(System.in);
 
@@ -19,40 +17,27 @@ public class Main {
 
         for (int player = 0; player < numberOfPlayers; player++) {
 
+            System.out.println("Player " + (player + 1) + " of " + numberOfPlayers + ": ");
 
-                System.out.println("Player " + (player + 1) + " of " + numberOfPlayers + ": ");
-
+            String name = "";
+            while (name.equals("")) {
                 System.out.print("Name: ");
-                String name = reader.next();
+                name = reader.next();
                 unsortedPlayersArray[player] = name;
-
-                System.out.print("Score: ");
-                int score = reader.nextInt();
-                scoresArray[player] = score;
-
-                System.out.println();
             }
+            int score;
+
+            System.out.print("Score: ");
+            score = reader.nextInt();
+            scoresArray[player] = score;
+
+            System.out.println();
 
         }
 
         reader.close();
 
-//--Comment this out to test -- END -- //
-
-//        // -- Used For Testing -- //
-//        int numberOfPlayers = 9;
-//        int[] scoresArray = {                 7332,         1,       654,        37,    100000,       754,      9874,         0,       5000};
-//        String[] unsortedPlayersArray = {"Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9",};
-//        //-
-
-//        // -- Used For Testing -- //
-//        int numberOfPlayers = 4;
-//        int[] scoresArray = {                   39,        38,        38,        37};
-//        String[] unsortedPlayersArray = {    "Bob",    "Wade",     "Max",  "Marry"};
-//        //-
-
-
-        int[] unsortedScoresArray = scoresArray.clone();
+        int[] unsortedScoresArray = scoresArray.clone(); //Keep a copy of the original using clone otherwise would change with sort
         Arrays.sort(scoresArray);
         int[] newScoresArray = scoresArray.clone(); //Created due to duplicates
 
@@ -75,14 +60,17 @@ public class Main {
             scoreRank++;
             System.out.println(scoreRank + ": " + sortedPlayerArray[player] + " " + newScoresArray[player]);
 
-            //If a player next player is the same don't count up
+            //If a players score is the same as the next players score don't count up
+            // for instance 1st wade 500, 2nd  max 300  2nd bob 300 3rd fred 100
+            //Like olympics if there is a tie then both people get that ranking
+
             try {
                 if ( (newScoresArray[player] == newScoresArray[player - 1] ) ) {
                     scoreRank--;
                 }
             }
             catch(Exception e) {
-
+              //
             }
     }
 
