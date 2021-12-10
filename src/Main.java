@@ -19,20 +19,13 @@ public class Main {
 
             System.out.println("Player " + (player + 1) + " of " + numberOfPlayers + ": ");
 
-            String name = "";
             System.out.print("Name: ");
-            name = reader.next();
-            unsortedPlayersArray[player] = name;
-            
-            int score;
+            unsortedPlayersArray[player] = reader.next();
+
             System.out.print("Score: ");
-            score = reader.nextInt();
-            scoresArray[player] = score;
-
-            System.out.println();
-
+            scoresArray[player]= reader.nextInt();
         }
-
+        
         reader.close();
 
         int[] unsortedScoresArray = scoresArray.clone(); //Keep a copy of the original using clone otherwise would change with sort
@@ -43,7 +36,7 @@ public class Main {
 
         for (int i = 0; i < numberOfPlayers; i++) {
             for (int j = 0; j < numberOfPlayers; j++) {
-                if ( unsortedScoresArray[i] == scoresArray[j] ) {
+                if (unsortedScoresArray[i] == scoresArray[j]) {
                     sortedPlayerArray[j] = unsortedPlayersArray[i];
                     unsortedScoresArray[i] = -1;  //solves duplicate issues
                     scoresArray[j] = -2; //solves duplicate issues
@@ -54,7 +47,7 @@ public class Main {
         System.out.println("High Score List: ");
         int scoreRank = 0;
 
-        for (int player = numberOfPlayers - 1; player >=0; player--){
+        for (int player = numberOfPlayers - 1; player >= 0; player--) {
             scoreRank++;
             System.out.println(scoreRank + ": " + sortedPlayerArray[player] + " " + newScoresArray[player]);
 
@@ -63,16 +56,15 @@ public class Main {
             //Like olympics if there is a tie then both people get that ranking
 
             try {
-                if ( (newScoresArray[player] == newScoresArray[player - 1] ) ) {
+                if ((newScoresArray[player] == newScoresArray[player - 1])) {
                     scoreRank--;
                 }
+            } catch (Exception e) {
+                //
             }
-            catch(Exception e) {
-              //
-            }
-    }
+        }
 
-}
+    }
 
 
 }
