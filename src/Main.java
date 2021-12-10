@@ -24,8 +24,10 @@ public class Main {
 
             System.out.print("Score: ");
             scoresArray[player]= reader.nextInt();
+
+            System.out.println();
         }
-        
+
         reader.close();
 
         int[] unsortedScoresArray = scoresArray.clone(); //Keep a copy of the original using clone otherwise would change with sort
