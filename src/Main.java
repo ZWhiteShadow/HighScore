@@ -9,21 +9,21 @@ public class Main {
         Scanner reader = new Scanner(System.in);
 
         System.out.print("How many people? ");
-        int numberOfPlayers = reader.nextInt();
+        int numberOfPlayers = reader.nextInt(); // ask for input on number of players
         System.out.println();
 
-        int[] scoresArray = new int[numberOfPlayers];
+        int[] scoresArray = new int[numberOfPlayers]; // initialize array with length of number of players
         String[] unsortedPlayersArray = new String[numberOfPlayers];
-
+        
         for (int player = 0; player < numberOfPlayers; player++) {
 
             System.out.println("Player " + (player + 1) + " of " + numberOfPlayers + ": ");
 
             System.out.print("Name: ");
-            unsortedPlayersArray[player] = reader.next();
+            unsortedPlayersArray[player] = reader.next(); //ask for input for name
 
             System.out.print("Score: ");
-            scoresArray[player]= reader.nextInt();
+            scoresArray[player]= reader.nextInt(); // ask for input for score
 
             System.out.println();
         }
@@ -31,7 +31,7 @@ public class Main {
         reader.close();
 
         int[] unsortedScoresArray = scoresArray.clone(); //Keep a copy of the original using clone otherwise would change with sort
-        Arrays.sort(scoresArray);
+        Arrays.sort(scoresArray); // change original array and sort in order - lowest to highest
         int[] newScoresArray = scoresArray.clone(); //Created due to duplicates
 
         String[] sortedPlayerArray = new String[numberOfPlayers];
@@ -39,7 +39,7 @@ public class Main {
         for (int i = 0; i < numberOfPlayers; i++) {
             for (int j = 0; j < numberOfPlayers; j++) {
                 if (unsortedScoresArray[i] == scoresArray[j]) {
-                    sortedPlayerArray[j] = unsortedPlayersArray[i];
+                    sortedPlayerArray[j] = unsortedPlayersArray[i]; // assign player name to empty array
                     unsortedScoresArray[i] = -1;  //solves duplicate issues
                     scoresArray[j] = -2; //solves duplicate issues
                 }
